@@ -67,4 +67,31 @@ svg
   .attr("height", yMap.bandwidth())
   .style("fill", function (d) {
     return myColor(d.value);
-  });
+  })
+  // Existing attributes like 'x', 'y', 'width', 'height', 'fill', etc.
+  .on("mouseover", function (event, d) {
+    d3.select(this).style("stroke", "darkblue").style("stroke-width", 2);
+  })
+  .on("mouseout", function (event, d) {
+    d3.select(this).style("stroke", "none").style("stroke-width", 0);
+  })
+  .on("click", function (event, d) {
+    drawBarChart(d);
+  }); // Function to draw the bar chart;
+
+function drawBarChart(data) {
+  console.log("clicked");
+  // Clear the existing chart
+  d3.select("#barChartContainer").html("");
+
+  // Set up a new SVG container or use an existing one
+  const svgBarChart = d3
+    .select("#barChartContainer")
+    .append("svg")
+    .attr("width", 400)
+    .attr("height", 200)
+    .append("g");
+
+  // Your bar chart drawing logic here
+  // Use 'data' to determine what to display
+}
