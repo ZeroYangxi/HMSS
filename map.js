@@ -32,8 +32,9 @@ const myColor = d3.scaleLinear().range(["white", "#69b3a2"]).domain([1, 100]);
 
 // Two-dimensional array data
 const matrixData = [
-  [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
-  [20, 30, 40, 50, 60, 70, 80, 90, 100, 110],
+  [10, 20, 30],
+  [40, 50, 60],
+  [70, 80, 90],
   // Add rows as needed
 ];
 
