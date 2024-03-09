@@ -1,3 +1,14 @@
+// Two-dimensional array data
+const matrixData = [
+  [3421, 3510, 3876, 3558, 3665],
+  [5244, 4812, 3456, 3666, 5455],
+  [3652, 3522, 3888, 3544, 5442],
+  [5465, 3789, 3577, 5488, 3388],
+  [5533, 5258, 5555, 3589, 5253],
+
+  // Add rows as needed
+];
+
 // Set the dimensions and margins of the graph
 const margin = { top: 30, right: 30, bottom: 30, left: 30 },
   width = 450 - margin.left - margin.right,
@@ -13,7 +24,7 @@ const svg = d3
   .attr("transform", `translate(${margin.left},${margin.top})`);
 
 // Labels of row and columns -> the groups and variables of the heatmap
-const myGroups = ["Maternity", "Surgical", "Medical"]; // Columns
+const myGroups = ["Maternity", "Surgical", "Medical", "ER", "Passway"]; // Columns
 const myVars = ["W01", "W02", "W03", "W04", "W05"]; // Rows
 
 // Build X scales and axis:
@@ -28,19 +39,10 @@ const yMap = d3.scaleBand().range([height, 0]).domain(myVars).padding(0.01);
 svg.append("g").call(d3.axisLeft(yMap));
 
 // Build color scale
-const myColor = d3.scaleLinear().range(["white", "#69b3a2"]).domain([1, 100]);
-
-// Two-dimensional array data
-const matrixData = [
-  [10, 20, 30],
-  [40, 50, 60],
-  [70, 80, 90],
-
-  [40, 50, 60],
-  [10, 20, 30],
-
-  // Add rows as needed
-];
+const myColor = d3
+  .scaleLinear()
+  .range(["white", "#880808"])
+  .domain([3000, 6600]);
 
 // Convert the two-dimensional array into an array of objects for D3
 const data = [];
