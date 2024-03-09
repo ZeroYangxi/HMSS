@@ -1,16 +1,11 @@
 // import CFU30 from "./data.js";
 
-document.getElementById("changeMessage").addEventListener("click", function () {
-  document.getElementById("message").textContent = "Have a Great Day!";
-});
+// Declare the chart dimensions and margins.
 
-// // Declare the chart dimensions and margins.
-// const width = 640;
-// const height = 400;
-// const marginTop = 20;
-// const marginRight = 20;
-// const marginBottom = 30;
-// const marginLeft = 40;
+const marginTop = 20;
+const marginRight = 20;
+const marginBottom = 30;
+const marginLeft = 40;
 
 // Declare the x (horizontal position) scale.
 const x = d3

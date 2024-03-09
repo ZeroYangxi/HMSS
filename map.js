@@ -17,15 +17,15 @@ const myGroups = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]; // Columns
 const myVars = ["v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8", "v9", "v10"]; // Rows
 
 // Build X scales and axis:
-const x = d3.scaleBand().range([0, width]).domain(myGroups).padding(0.01);
+const xMap = d3.scaleBand().range([0, width]).domain(myGroups).padding(0.01);
 svg
   .append("g")
   .attr("transform", `translate(0, ${height})`)
-  .call(d3.axisBottom(x));
+  .call(d3.axisBottom(xMap));
 
 // Build Y scales and axis:
-const y = d3.scaleBand().range([height, 0]).domain(myVars).padding(0.01);
-svg.append("g").call(d3.axisLeft(y));
+const yMap = d3.scaleBand().range([height, 0]).domain(myVars).padding(0.01);
+svg.append("g").call(d3.axisLeft(yMap));
 
 // Build color scale
 const myColor = d3.scaleLinear().range(["white", "#69b3a2"]).domain([1, 100]);
@@ -57,13 +57,13 @@ svg
   })
   .join("rect")
   .attr("x", function (d) {
-    return x(d.group);
+    return xMap(d.group);
   })
   .attr("y", function (d) {
-    return y(d.variable);
+    return yMap(d.variable);
   })
-  .attr("width", x.bandwidth())
-  .attr("height", y.bandwidth())
+  .attr("width", xMap.bandwidth())
+  .attr("height", yMap.bandwidth())
   .style("fill", function (d) {
     return myColor(d.value);
   });
