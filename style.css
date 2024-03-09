@@ -18,6 +18,7 @@ body {
 
 .map {
   padding-top: 20rem;
+  margin: 5rem;
   display: flex;
 }
 

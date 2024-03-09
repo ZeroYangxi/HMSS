@@ -13,8 +13,8 @@ const svg = d3
   .attr("transform", `translate(${margin.left},${margin.top})`);
 
 // Labels of row and columns -> the groups and variables of the heatmap
-const myGroups = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]; // Columns
-const myVars = ["v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8", "v9", "v10"]; // Rows
+const myGroups = ["Maternity", "Surgical", "Medical"]; // Columns
+const myVars = ["W01", "W02", "W03"]; // Rows
 
 // Build X scales and axis:
 const xMap = d3.scaleBand().range([0, width]).domain(myGroups).padding(0.01);
