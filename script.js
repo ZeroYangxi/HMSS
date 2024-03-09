@@ -54,6 +54,6 @@ let barChart = d3
 // N = michrobial CFU / m3 of indoor air */
 
 /*
-N 500~2000 high
-N > 2000 very high
-N <500 expected, safe */
+N 500~2000 high: yellow/orange
+N > 2000 very high: red
+N <500 expected, safe : green*/

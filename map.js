@@ -79,6 +79,7 @@ svg
   .on("mouseover", function (event, d) {
     tooltip
       .style("visibility", "visible")
+      .style("opacity", 1) // Make tooltip fully opaque
       .text(`Group: ${d.group}, Variable: ${d.variable}, Value: ${d.value}`);
     d3.select(this).style("stroke", "darkblue").style("stroke-width", 2);
   })
@@ -88,7 +89,11 @@ svg
       .style("left", event.pageX + 10 + "px");
   })
   .on("mouseout", function (event, d) {
-    tooltip.style("visibility", "hidden");
+    tooltip
+      .style("opacity", 0) // Transition to transparent
+      .transition()
+      .delay(200)
+      .style("visibility", "hidden"); // Hide tooltip after transition
     d3.select(this).style("stroke", "none").style("stroke-width", 0);
   })
   .on("click", function (event, d) {

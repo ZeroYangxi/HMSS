@@ -19,11 +19,17 @@ body {
 #tooltip {
   position: absolute;
   visibility: hidden;
-  padding: 8px;
-  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.85); /* Darker background for better contrast */
   color: white;
-  border-radius: 4px;
-  font-size: 12px;
+  border-radius: 4px; /* Slightly larger radius for a softer look */
+  border-color: #000000;
+  font-size: 14px; /* Larger font size for readability */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+  pointer-events: none; /* Avoids tooltip interfering with mouse events */
+  transition: visibility 0.2s, opacity 0.2s ease-in-out; /* Smooth transition */
+  opacity: 0; /* Start with tooltip transparent */
+  z-index: 1000; /* Ensure it's above other elements */
 }
 
 .map {
