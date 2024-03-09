@@ -14,7 +14,7 @@ const svg = d3
 
 // Labels of row and columns -> the groups and variables of the heatmap
 const myGroups = ["Maternity", "Surgical", "Medical"]; // Columns
-const myVars = ["W01", "W02", "W03"]; // Rows
+const myVars = ["W01", "W02", "W03", "W04", "W05"]; // Rows
 
 // Build X scales and axis:
 const xMap = d3.scaleBand().range([0, width]).domain(myGroups).padding(0.01);
@@ -35,6 +35,10 @@ const matrixData = [
   [10, 20, 30],
   [40, 50, 60],
   [70, 80, 90],
+
+  [40, 50, 60],
+  [10, 20, 30],
+
   // Add rows as needed
 ];
 
@@ -49,6 +53,9 @@ matrixData.forEach((row, rowIndex) => {
     });
   });
 });
+
+// Select the tooltip div
+const tooltip = d3.select("#tooltip");
 
 // Use the converted data to create the heatmap
 svg
@@ -70,9 +77,18 @@ svg
   })
   // Existing attributes like 'x', 'y', 'width', 'height', 'fill', etc.
   .on("mouseover", function (event, d) {
+    tooltip
+      .style("visibility", "visible")
+      .text(`Group: ${d.group}, Variable: ${d.variable}, Value: ${d.value}`);
     d3.select(this).style("stroke", "darkblue").style("stroke-width", 2);
   })
+  .on("mousemove", function (event, d) {
+    tooltip
+      .style("top", event.pageY - 10 + "px")
+      .style("left", event.pageX + 10 + "px");
+  })
   .on("mouseout", function (event, d) {
+    tooltip.style("visibility", "hidden");
     d3.select(this).style("stroke", "none").style("stroke-width", 0);
   })
   .on("click", function (event, d) {

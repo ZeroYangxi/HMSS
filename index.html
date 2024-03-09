@@ -15,13 +15,34 @@
   <body>
     <nav class="navbar">
       <a href="#home" class="nav-link">Home</a>
-      <a href="#about" class="nav-link">About</a>
+      <a href="#about" class="nav-link">CFUCalculor</a>
       <a href="#services" class="nav-link">Services</a>
       <a href="#contact" class="nav-link">Contact</a>
     </nav>
     <svg class="map" width="900" height="900"></svg>
+    <div id="tooltip"></div>
+
     <svg class="bar-chart"></svg>
     <div id="barChartContainer"></div>
+    <section class="input-form">
+      <form id="cfuForm">
+        <label for="colonies">Count of Colonies:</label>
+        <input type="number" id="colonies" name="colonies" required />
+
+        <label for="size">Area of plate (cm2):</label>
+        <input type="number" id="size" name="size" required />
+
+        <label for="exposureTime">Exposure Time (min):</label>
+        <input type="number" id="exposureTime" name="exposureTime" required />
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" />
+        <!-- use a select here-->
+
+        <button type="submit">Calculate CFU</button>
+      </form>
+    </section>
+    <div id="result"></div>
     <!-- 
     <div class="container">
       <button id="changeMessage">Change Message</button>
@@ -29,5 +50,6 @@
     <script src="d3.v7.min.js"></script>
     <!-- <script src="script.js"></script> -->
     <script src="map.js"></script>
+    <script src="CFUcalculator.js"></script>
   </body>
 </html>
