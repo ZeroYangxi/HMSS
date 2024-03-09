@@ -10,7 +10,7 @@ const matrixData = [
 ];
 
 // Set the dimensions and margins of the graph
-const margin = { top: 30, right: 30, bottom: 30, left: 30 },
+const margin = { top: 50, right: 50, bottom: 50, left: 50 },
   width = 450 - margin.left - margin.right,
   height = 450 - margin.top - margin.bottom;
 
@@ -32,11 +32,17 @@ const xMap = d3.scaleBand().range([0, width]).domain(myGroups).padding(0.01);
 svg
   .append("g")
   .attr("transform", `translate(0, ${height})`)
-  .call(d3.axisBottom(xMap));
+  .call(d3.axisBottom(xMap))
+  .selectAll("text")
+  .style("font-size", "16px");
 
 // Build Y scales and axis:
 const yMap = d3.scaleBand().range([height, 0]).domain(myVars).padding(0.01);
-svg.append("g").call(d3.axisLeft(yMap));
+svg
+  .append("g")
+  .call(d3.axisLeft(yMap))
+  .selectAll("text")
+  .style("font-size", "16px");
 
 // Build color scale
 const myColor = d3

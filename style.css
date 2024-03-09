@@ -10,7 +10,7 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-color: #ffffff;
+  background-color: white;
   color: black;
   padding-top: 60px;
   /* Add top padding to body to prevent content from being hidden behind the navbar */
