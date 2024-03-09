@@ -1,0 +1,170 @@
+[
+  {
+    "site": "Maternity",
+    "ward": "W01",
+    "time": "8:30am",
+    "exposureTime": 30,
+    "value": 3355
+  },
+  {
+    "site": "Maternity",
+    "ward": "W01",
+    "time": "8:30am",
+    "exposureTime": 60,
+    "value": 3290
+  },
+  {
+    "site": "Maternity",
+    "ward": "W01",
+    "time": "8:30am",
+    "exposureTime": 90,
+    "value": 3425
+  },
+  {
+    "site": "Maternity",
+    "ward": "W01",
+    "time": "4:00pm",
+    "exposureTime": 30,
+    "value": 8309
+  },
+  {
+    "site": "Maternity",
+    "ward": "W01",
+    "time": "4:00pm",
+    "exposureTime": 60,
+    "value": 8807
+  },
+  {
+    "site": "Maternity",
+    "ward": "W01",
+    "time": "4:00pm",
+    "exposureTime": 90,
+    "value": 9733
+  },
+  {
+    "site": "Maternity",
+    "ward": "W02",
+    "time": "8:30am",
+    "exposureTime": 30,
+    "value": 3145
+  },
+  {
+    "site": "Maternity",
+    "ward": "W02",
+    "time": "8:30am",
+    "exposureTime": 60,
+    "value": 3211
+  },
+  {
+    "site": "Maternity",
+    "ward": "W02",
+    "time": "8:30am",
+    "exposureTime": 90,
+    "value": 3355
+  },
+  {
+    "site": "Maternity",
+    "ward": "W02",
+    "time": "4:00pm",
+    "exposureTime": 30,
+    "value": 8466
+  },
+  {
+    "site": "Maternity",
+    "ward": "W02",
+    "time": "4:00pm",
+    "exposureTime": 60,
+    "value": 8702
+  },
+  {
+    "site": "Maternity",
+    "ward": "W02",
+    "time": "4:00pm",
+    "exposureTime": 90,
+    "value": 8021
+  },
+  {
+    "site": "Surgical",
+    "ward": "W01",
+    "time": "8:30am",
+    "exposureTime": 30,
+    "value": 3643
+  },
+  {
+    "site": "Surgical",
+    "ward": "W01",
+    "time": "8:30am",
+    "exposureTime": 60,
+    "value": 3159
+  },
+  {
+    "site": "Surgical",
+    "ward": "W01",
+    "time": "8:30am",
+    "exposureTime": 90,
+    "value": 5090
+  },
+  {
+    "site": "Surgical",
+    "ward": "W01",
+    "time": "4:00pm",
+    "exposureTime": 30,
+    "value": 3198
+  },
+  {
+    "site": "Surgical",
+    "ward": "W01",
+    "time": "4:00pm",
+    "exposureTime": 60,
+    "value": 4390
+  },
+  {
+    "site": "Surgical",
+    "ward": "W01",
+    "time": "4:00pm",
+    "exposureTime": 90,
+    "value": 6029
+  },
+  {
+    "site": "Surgical",
+    "ward": "W02",
+    "time": "8:30am",
+    "exposureTime": 30,
+    "value": 3329
+  },
+  {
+    "site": "Surgical",
+    "ward": "W02",
+    "time": "8:30am",
+    "exposureTime": 60,
+    "value": 3106
+  },
+  {
+    "site": "Surgical",
+    "ward": "W02",
+    "time": "8:30am",
+    "exposureTime": 90,
+    "value": 4893
+  },
+  {
+    "site": "Surgical",
+    "ward": "W02",
+    "time": "4:00pm",
+    "exposureTime": 30,
+    "value": 3381
+  },
+  {
+    "site": "Surgical",
+    "ward": "W02",
+    "time": "4:00pm",
+    "exposureTime": 60,
+    "value": 4272
+  },
+  {
+    "site": "Surgical",
+    "ward": "W02",
+    "time": "4:00pm",
+    "exposureTime": 90,
+    "value": 6002
+  }
+]
