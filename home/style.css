@@ -25,7 +25,7 @@ body {
   margin: 0;
   background-color: #ffffff;
   color: black;
-  padding-top: 60px;
+  padding-top: 2rem;
   /* Add top padding to body to prevent content from being hidden behind the navbar */
 }
 
@@ -50,7 +50,7 @@ body {
   display: absolute;
   padding-left: 1rem;
   margin-top: 2rem;
-  margin-left: 6rem; /* Adjust based on your layout */
+  margin-left: 2rem; /* Adjust based on your layout */
   transition: ease;
 }
 

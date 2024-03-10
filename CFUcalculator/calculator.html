@@ -2,31 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CFU Image Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="calculator.css" />
   </head>
   <body>
-    <div class="calculator-container">
+    <nav>
+      <a href="../home/index.html" class="nav-link">Home</a>
+      <a href="./about.html" class="nav-link">About</a>
+      <a href="../CFUcalculator/calculator.html" class="nav-link"
+        >CFUCalculor</a
+      >
+      <a href="#contact" class="nav-link">Meet Our Team</a>
+    </nav>
+
+    <main>
       <h1>CFU IMAGE CALCULATOR</h1>
-      <form id="cfuForm">
-        <div>
-          <label for="colonies">Colonies count:</label>
-          <input type="number" id="colonies" required />
+      <div class="calculator-container">
+        <div class="image-container">
+          <!-- Placeholder for the image -->
+          <div class="cfu-image-placeholder"></div>
         </div>
-        <div>
-          <label for="size">Disk size:</label>
-          <input type="number" step="0.1" id="size" required />
+        <div class="results-container">
+          <p>COLONIES COUNT: <span>77</span></p>
+          <p>DISK SIZE: <span>9.2</span></p>
+          <p>EXPOSURE TIME: <span>10</span></p>
+          <p class="result">RESULT: <span>41847.82609</span></p>
+          <p>LOCATION: <span>ICU 005</span></p>
+          <p>TEMPERATURE: <span>25°C/77°F</span></p>
         </div>
-        <div>
-          <label for="exposureTime">Exposure time:</label>
-          <input type="number" id="exposureTime" required />
-        </div>
-        <div>
-          <button type="submit">Calculate</button>
-        </div>
-      </form>
-      <div id="result"></div>
-    </div>
-    <script src="CFUCalculator.js"></script>
+      </div>
+      <div class="actions-container">
+        <button>IMAGE UPLOAD</button>
+        <button>CALCULATE</button>
+      </div>
+    </main>
   </body>
 </html>
