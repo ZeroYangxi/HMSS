@@ -109,11 +109,26 @@ svg
     d3.select(this).style("stroke", "none").style("stroke-width", 0);
   })
   .on("click", function (event, d) {
+    const clickedValue = d.value;
     // Generate new random data
-    const newData = CFUWithTimestamps.map((item) => ({
-      date: item.date,
-      value: item.value + Math.floor(Math.random() * 2000) - 1000, // Randomly adjust value
-    }));
+    // Generate new data, keeping the last value's value as the clicked value
+    const newData = CFUWithTimestamps.map((item, index, array) => {
+      if (index === array.length - 1) {
+        // Check if it is the last item
+        return { date: item.date, value: clickedValue }; // Set the last item's value to the clicked value
+      } else if (item.date === "2022-03-15") {
+        // Your original condition for a specific date, if needed
+        return {
+          /* some modification for this specific date */
+        };
+      } else {
+        // For all other items, adjust the value randomly
+        return {
+          date: item.date,
+          value: item.value + Math.floor(Math.random() * 2000) - 1000,
+        };
+      }
+    });
 
     // Update the area plot with this new data
     updateAreaPlot(newData);
