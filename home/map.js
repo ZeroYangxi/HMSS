@@ -172,7 +172,8 @@ function updateAreaPlot(newData) {
   // Set up y-axis as a linear scale
   const y = d3
     .scaleLinear()
-    .domain([0, d3.max(newData, (d) => d.value)]) // Use the max value for domain
+    .domain([0, d3.max(newData, (d) => d.value) * 1.2]) // Use the max value for domain
+    // 将最大值乘以一个系数（如1.1）来留出额外空间
     .range([heightArea, 0]);
 
   areaChart
@@ -203,14 +204,57 @@ function updateAreaPlot(newData) {
     .datum(newData)
     .attr("fill", "#ce9b9b")
     // Fill color for the area
-    .attr("d", area);
+    .attr("d", area)
+    .attr("opacity", 0) // 初始设置为透明，准备动画
+    .transition() // 开始动画
+    .duration(1000) // 动画持续时间
+    .attr("opacity", 1); // 动画结束时透明度变为1;
 
-  // Optionally, you can also include the line on top of the area
+  // include the line on top of the area
   areaChart
     .append("path")
     .datum(newData)
     .attr("fill", "none")
+    .attr("d", area)
     .attr("stroke", "#7a3e3e")
     .attr("stroke-width", 2)
-    .attr("d", line); // Re-using the line generator for the boundary
+    .attr("d", line);
+
+  // add data-point
+  areaChart
+    .selectAll(".data-point")
+    .data(newData)
+    .enter()
+    .append("circle")
+    .attr("class", "data-point")
+    .attr("cx", function (d) {
+      return x(d.date);
+    }) // x of the circle
+    .attr("cy", function (d) {
+      return y(d.value);
+    }) // y
+    .attr("r", 4) // radius of circle
+    .style("fill", "#7a3e3e")
+    .style("stroke", "#ffffff")
+    .style("stroke-width", 1.5);
+
+  // data-label text for each data point
+  areaChart
+    .selectAll(".data-label")
+    .data(newData)
+    .enter()
+    .append("text") // 为每个数据点创建一个文本元素
+    .attr("class", "data-label")
+    .attr("x", function (d) {
+      return x(d.date);
+    }) // 设置文本的x坐标
+    .attr("y", function (d) {
+      return y(d.value) - 6;
+    }) // 设置文本的y坐标，稍微向上偏移，以不遮挡数据点
+    .text(function (d) {
+      return d.value;
+    }) // 设置文本内容为数据点的值
+    .attr("text-anchor", "middle") // 文本对齐方式设置为中间，以使文本在数据点上方居中对齐
+    .style("font-size", "12px") // 设置文本的字体大小
+    .style("fill", "#333333"); // 设置文本的填充颜色
 }
