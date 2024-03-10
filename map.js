@@ -152,7 +152,7 @@ function updateAreaPlot(newData) {
         .tickFormat(d3.timeFormat("%b %d")) // Format ticks as 'Month day'
     )
     .selectAll("*") // Select all elements of the x-axis
-    .attr("stroke", "#ffffff");
+    .attr("stroke", "#000000");
 
   // Set up y-axis as a linear scale
   const y = d3
@@ -164,7 +164,7 @@ function updateAreaPlot(newData) {
     .append("g")
     .call(d3.axisLeft(y))
     .selectAll("*") // Select all elements of the x-axis
-    .attr("stroke", "#ffffff");
+    .attr("stroke", "#000000");
 
   // Define the area
   const area = d3

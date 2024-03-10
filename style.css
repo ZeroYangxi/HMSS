@@ -23,7 +23,7 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-color: black;
+  background-color: #ffffff;
   color: black;
   padding-top: 60px;
   /* Add top padding to body to prevent content from being hidden behind the navbar */
@@ -85,7 +85,7 @@ button:hover {
 
 .nav-link {
   float: left;
-  color: #aa4a44;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;

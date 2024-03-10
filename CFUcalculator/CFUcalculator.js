@@ -1,25 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("cfuForm")
-    .addEventListener("submit", function (event) {
+  const form = document.getElementById('cfuForm');
+  const photoInput = document.getElementById('photo');
+  const imagePreview = document.getElementById('imagePreview');
+  const resultDisplay = document.getElementById('result');
+
+  form.addEventListener('submit', function (event) {
       event.preventDefault(); // Prevent the form from submitting in the traditional way
-
-      // Get values from the form
-      const colonies = document.getElementById("colonies").value;
-      const size = document.getElementById("size").value;
-      const exposureTime = document.getElementById("exposureTime").value;
-
-      // Calculate CFU
-      const cfu = CFUCounter(
-        parseInt(colonies),
-        parseFloat(size),
-        parseFloat(exposureTime)
-      );
+      
+      // ... Your existing code to get form values and calculate CFU ...
 
       // Display the result
-      document.getElementById("result").textContent = `Calculated CFU: ${cfu}`;
-    });
+      resultDisplay.textContent = `Calculated CFU: ${cfu}`;
+  });
+
+  // Listener for changes on the photo input
+  photoInput.addEventListener('change', function () {
+      const file = photoInput.files[0];
+      if (file) {
+          // Use FileReader to read the file contents
+          const reader = new FileReader();
+          reader.onload = function (e) {
+              // Set the background image of the imagePreview element to the uploaded file
+              imagePreview.style.backgroundImage = `url(${e.target.result})`;
+              imagePreview.style.backgroundSize = 'contain';
+              imagePreview.style.backgroundRepeat = 'no-repeat';
+              imagePreview.style.backgroundPosition = 'center center';
+          };
+          reader.readAsDataURL(file);
+      }
+  });
 });
+
 
 function CFUCounter(colonies, size, exposureTime) {
   // Ensure values are not zero to prevent division by zero
