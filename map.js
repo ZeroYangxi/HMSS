@@ -17,7 +17,7 @@ let CFUWithTimestamps = [
 ];
 
 // Set the dimensions and margins of the graph
-const margin = { top: 0, right: 50, bottom: 50, left: 0 },
+let margin = { top: 0, right: 50, bottom: 50, left: 0 },
   width = 400 - margin.left - margin.right,
   height = 400 - margin.top - margin.bottom;
 
@@ -120,16 +120,19 @@ svg
   });
 
 function updateAreaPlot(newData) {
+  let marginArea = { top: 0, right: 50, bottom: 50, left: 50 },
+    widthArea = 400 - margin.left - margin.right,
+    heightArea = 400 - margin.top - margin.bottom;
   // Clear the existing area chart
   d3.select(".areaChart").select("svg").remove();
 
   const areaChart = d3
     .select(".areaChart")
     .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", widthArea + marginArea.left + marginArea.right)
+    .attr("height", heightArea + marginArea.top + marginArea.bottom)
     .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+    .attr("transform", `translate(${marginArea.left},${marginArea.top})`);
 
   // Extracting dates fromnewData for the x-axis ticks
   const tickValues = newData.map((d) => d.date);
@@ -138,24 +141,30 @@ function updateAreaPlot(newData) {
   const x = d3
     .scaleTime()
     .domain(d3.extent(newData, (d) => d.date)) // Use the extent of dates from your data
-    .range([0, width]);
+    .range([0, widthArea]);
   areaChart
     .append("g")
-    .attr("transform", `translate(0,${height})`)
+    .attr("transform", `translate(0,${heightArea})`)
     .call(
       d3
         .axisBottom(x)
         .tickValues(tickValues) // Use the dates from your data as tick values
-        .tickFormat(d3.timeFormat("%b %d"))
-    ); // Format ticks as 'Month day'
+        .tickFormat(d3.timeFormat("%b %d")) // Format ticks as 'Month day'
+    )
+    .selectAll("*") // Select all elements of the x-axis
+    .attr("stroke", "#ffffff");
 
   // Set up y-axis as a linear scale
   const y = d3
     .scaleLinear()
     .domain([0, d3.max(newData, (d) => d.value)]) // Use the max value for domain
-    .range([height, 0]);
+    .range([heightArea, 0]);
 
-  areaChart.append("g").call(d3.axisLeft(y));
+  areaChart
+    .append("g")
+    .call(d3.axisLeft(y))
+    .selectAll("*") // Select all elements of the x-axis
+    .attr("stroke", "#ffffff");
 
   // Define the area
   const area = d3
@@ -170,7 +179,7 @@ function updateAreaPlot(newData) {
     .area()
     // .curve(d3.curveMonotoneX) //This makes the line smoother
     .x((d) => x(d.date)) // Position line based on date
-    .y0(height)
+    .y0(heightArea)
     .y1((d) => y(d.value)); // Position line based on CFU value
 
   // Draw the area

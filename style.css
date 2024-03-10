@@ -48,8 +48,9 @@ body {
 /* Adjustments for alignment */
 .areaChart {
   display: absolute;
+  padding-left: 1rem;
   margin-top: 2rem;
-  margin-left: 5rem; /* Adjust based on your layout */
+  margin-left: 6rem; /* Adjust based on your layout */
   transition: ease;
 }
 
