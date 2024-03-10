@@ -110,6 +110,11 @@ svg
   })
   .on("click", function (event, d) {
     const clickedValue = d.value;
+    const CFUalert = 2000;
+    //alert
+    if (d.value > CFUalert) {
+      window.alert("CFU is too high!");
+    }
     // Generate new random data
     // Generate new data, keeping the last value's value as the clicked value
     const newData = CFUWithTimestamps.map((item, index, array) => {
