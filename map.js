@@ -111,11 +111,11 @@ svg
   .on("click", function (event, d) {
     const clickedValue = d.value;
     const CFUalert = 2000;
+    // Clear the container's content
+    alertContainer.innerHTML = "";
+
     //alert
     if (d.value > CFUalert) {
-      // Clear the container's content
-      alertContainer.innerHTML = "";
-
       const para = document.createElement("p");
       para.setAttribute("class", "alert-message");
       const node = document.createTextNode("CFU value is too high!");
