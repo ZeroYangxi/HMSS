@@ -7,11 +7,14 @@ const matrixData = [
   [5533, 5258, 5555, 3589, 5253],
 ];
 
-// // Load data from the JSON file
-// d3.json('/mnt/data/data.json').then(function(loadedData) {
-//   // All your code that depends on the data goes here, inside this callback
-//   // For example, the entire setup for the heatmap, including scales, axes, and rectangles, should use loadedData
-// });
+let CFUWithTimestamps = [
+  { date: new Date("2022-01-01"), value: 3600 },
+  { date: new Date("2022-01-15"), value: 3700 },
+  { date: new Date("2022-02-01"), value: 3900 },
+  { date: new Date("2022-02-15"), value: 3600 },
+  { date: new Date("2022-03-01"), value: 3700 },
+  { date: new Date("2022-03-15"), value: 5200 },
+];
 
 // Set the dimensions and margins of the graph
 const margin = { top: 50, right: 50, bottom: 50, left: 50 },
@@ -109,6 +112,83 @@ svg
     d3.select(this).style("stroke", "none").style("stroke-width", 0);
   })
   .on("click", function (event, d) {
-    console.log("clicked");
-    // updateDensityPlot(d.group); // Assuming d.group identifies the dataset or parameter for the density plot
-  }); // Function to draw the bar chart;
+    // Generate new random data
+    const newData = CFUWithTimestamps.map((item) => ({
+      date: item.date,
+      value: item.value + Math.floor(Math.random() * 2000) - 1000, // Randomly adjust value
+    }));
+
+    // Update the area plot with this new data
+    updateAreaPlot(newData);
+  });
+
+function updateAreaPlot(newData) {
+  // Clear the existing area chart
+  d3.select("#lineChart").select("svg").remove();
+
+  const areaChart = d3
+    .select("#lineChart")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  // Extracting dates fromnewData for the x-axis ticks
+  const tickValues = newData.map((d) => d.date);
+
+  // Set up x-axis as a time scale
+  const x = d3
+    .scaleTime()
+    .domain(d3.extent(newData, (d) => d.date)) // Use the extent of dates from your data
+    .range([0, width]);
+  areaChart
+    .append("g")
+    .attr("transform", `translate(0,${height})`)
+    .call(
+      d3
+        .axisBottom(x)
+        .tickValues(tickValues) // Use the dates from your data as tick values
+        .tickFormat(d3.timeFormat("%b %d"))
+    ); // Format ticks as 'Month day'
+
+  // Set up y-axis as a linear scale
+  const y = d3
+    .scaleLinear()
+    .domain([0, d3.max(newData, (d) => d.value)]) // Use the max value for domain
+    .range([height, 0]);
+
+  areaChart.append("g").call(d3.axisLeft(y));
+
+  // Define the area
+  const area = d3
+    .area()
+    // .curve(d3.curveMonotoneX) //This makes the line smoother
+    .x((d) => x(d.date)) // Position line based on date
+    .y0(height)
+    .y1((d) => y(d.value)); // Position line based on CFU value
+
+  // Define the line
+  const line = d3
+    .area()
+    // .curve(d3.curveMonotoneX) //This makes the line smoother
+    .x((d) => x(d.date)) // Position line based on date
+    .y0(height)
+    .y1((d) => y(d.value)); // Position line based on CFU value
+
+  // Draw the area
+  areaChart
+    .append("path")
+    .datum(newData)
+    .attr("fill", "pink") // Fill color for the area
+    .attr("d", area);
+
+  // Optionally, you can also include the line on top of the area
+  areaChart
+    .append("path")
+    .datum(newData)
+    .attr("fill", "none")
+    .attr("stroke", "steelblue")
+    .attr("stroke-width", 2)
+    .attr("d", line); // Re-using the line generator for the boundary
+}
