@@ -113,7 +113,18 @@ svg
     const CFUalert = 2000;
     //alert
     if (d.value > CFUalert) {
-      window.alert("CFU is too high!");
+      // Clear the container's content
+      alertContainer.innerHTML = "";
+
+      const para = document.createElement("p");
+      para.setAttribute("class", "alert-message");
+      const node = document.createTextNode("CFU value is too high!");
+      para.appendChild(node);
+      document.getElementById("alertContainer").appendChild(para);
+      // Trigger the animation
+      setTimeout(() => {
+        para.style.opacity = 1;
+      }, 10); // A slight delay to ensure the transition occurs
     }
     // Generate new random data
     // Generate new data, keeping the last value's value as the clicked value

@@ -11,6 +11,18 @@
   font-style: normal;
 }
 
+#heatmap,
+#areaChart {
+  display: block;
+  width: 100%;
+  /* Add any additional styling here */
+}
+
+#areaChart,
+#alertContainer {
+  margin-bottom: 20px;
+}
+
 .map-container {
   position: relative;
   width: 350px; /* Width of the floor plan image */
@@ -54,7 +66,6 @@ body {
 
 /* Adjustments for alignment */
 .areaChart {
-  display: absolute;
   padding-left: 1rem;
   margin-top: 2rem;
   margin-left: 2rem; /* Adjust based on your layout */
@@ -163,6 +174,26 @@ button:hover {
   max-width: 600px; /* Match the form width for alignment */
   margin-left: auto; /* Center align the block */
   margin-right: auto; /* Center align the block */
+}
+
+#alertContainer {
+  margin-bottom: 2rem;
+  /* Ensures the alertContainer itself does not apply any animation */
+}
+
+.alert-message {
+  opacity: 0; /* Start fully transparent */
+  transition: opacity 0.5s ease-out; /* Animate the opacity */
+  margin-top: 1em; /* Pushes the message to a new line */
+}
+
+/* Optionally, if you want to style the alert messages */
+.alert-message {
+  background-color: #ffdddd; /* Light red background */
+  border-left: 6px solid #f44336; /* Red left border */
+  padding: 4px 12px; /* Some padding */
+  margin: 10px 0; /* Margin top and bottom */
+  border-radius: 4px; /* Rounded corners */
 }
 
 /* Make the navigation links stack vertically on smaller screens */
