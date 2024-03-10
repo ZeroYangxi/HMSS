@@ -28,6 +28,8 @@ function CFUCounter(colonies, size, exposureTime) {
     return;
   }
 
-  let CFU = 5 * colonies * Math.pow(10, 4) * Math.pow(size * exposureTime, -1);
+  let CFU = Math.floor(
+    5 * colonies * Math.pow(10, 4) * Math.pow(size * exposureTime, -1)
+  );
   return CFU;
 }

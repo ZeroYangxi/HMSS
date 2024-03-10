@@ -10,7 +10,7 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-color: white;
+  background-color: #ffffff;
   color: black;
   padding-top: 60px;
   /* Add top padding to body to prevent content from being hidden behind the navbar */
@@ -33,9 +33,16 @@ body {
 }
 
 .map {
-  padding-top: 20rem;
+  display: block;
+  padding-top: 30rem;
   margin: 5rem;
-  display: flex;
+}
+
+/* Adjustments for alignment */
+#lineChart {
+  display: block;
+  padding-top: 30rem;
+  margin: 5-rem; /* Adjust based on your layout */
 }
 
 .stats {
@@ -73,7 +80,7 @@ button:hover {
 
 .nav-link {
   float: left;
-  color: #32ff5b;
+  color: #aa4a44;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;

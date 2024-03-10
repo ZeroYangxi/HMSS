@@ -124,10 +124,10 @@ svg
 
 function updateAreaPlot(newData) {
   // Clear the existing area chart
-  d3.select("#lineChart").select("svg").remove();
+  d3.select(".areaChart").select("svg").remove();
 
   const areaChart = d3
-    .select("#lineChart")
+    .select(".areaChart")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -180,7 +180,7 @@ function updateAreaPlot(newData) {
   areaChart
     .append("path")
     .datum(newData)
-    .attr("fill", "pink") // Fill color for the area
+    .attr("fill", "#E97451") // Fill color for the area
     .attr("d", area);
 
   // Optionally, you can also include the line on top of the area
@@ -188,7 +188,7 @@ function updateAreaPlot(newData) {
     .append("path")
     .datum(newData)
     .attr("fill", "none")
-    .attr("stroke", "steelblue")
+    .attr("stroke", "#AA4A44")
     .attr("stroke-width", 2)
     .attr("d", line); // Re-using the line generator for the boundary
 }
