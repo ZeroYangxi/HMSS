@@ -4,6 +4,19 @@
   font-style: normal;
 }
 
+.map-container {
+  position: relative;
+  width: 350px; /* Width of the floor plan image */
+  height: 350px; /* Height of the floor plan image */
+}
+
+.map-container img,
+.map-container svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -32,21 +45,11 @@ body {
   z-index: 1000; /* Ensure it's above other elements */
 }
 
-.map {
-  display: block;
-  padding-top: 30rem;
-  margin: 5rem;
-}
-
 /* Adjustments for alignment */
-#lineChart {
+#areaChart {
   display: block;
   padding-top: 30rem;
   margin: 5-rem; /* Adjust based on your layout */
-}
-
-.stats {
-  background-color: aqua;
 }
 
 .container {

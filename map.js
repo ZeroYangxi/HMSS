@@ -17,9 +17,9 @@ let CFUWithTimestamps = [
 ];
 
 // Set the dimensions and margins of the graph
-const margin = { top: 50, right: 50, bottom: 50, left: 50 },
-  width = 450 - margin.left - margin.right,
-  height = 450 - margin.top - margin.bottom;
+const margin = { top: 0, right: 50, bottom: 50, left: 0 },
+  width = 400 - margin.left - margin.right,
+  height = 400 - margin.top - margin.bottom;
 
 // Append the svg object to the body of the page
 const svg = d3
@@ -40,16 +40,12 @@ svg
   .append("g")
   .attr("transform", `translate(0, ${height})`)
   .call(d3.axisBottom(xMap))
-  .selectAll("text")
-  .style("font-size", "16px");
+  .selectAll("*")
+  .style("opacity", 0); // Make the X axis invisible;
 
 // Build Y scales and axis:
 const yMap = d3.scaleBand().range([height, 0]).domain(myVars).padding(0.01);
-svg
-  .append("g")
-  .call(d3.axisLeft(yMap))
-  .selectAll("text")
-  .style("font-size", "16px");
+svg.append("g").call(d3.axisLeft(yMap)).selectAll("*").style("opacity", 0); // Make the Y axis invisible;
 
 // Build color scale
 const myColor = d3
@@ -90,12 +86,13 @@ svg
   .style("fill", function (d) {
     return myColor(d.value);
   })
+  .style("opacity", 0.6)
   // Existing attributes like 'x', 'y', 'width', 'height', 'fill', etc.
   .on("mouseover", function (event, d) {
     tooltip
       .style("visibility", "visible")
       .style("opacity", 1) // Make tooltip fully opaque
-      .text(`Group: ${d.group}, Variable: ${d.variable}, Value: ${d.value}`);
+      .text(`CFU: ${d.value}`);
     d3.select(this).style("stroke", "darkblue").style("stroke-width", 2);
   })
   .on("mousemove", function (event, d) {
@@ -180,7 +177,8 @@ function updateAreaPlot(newData) {
   areaChart
     .append("path")
     .datum(newData)
-    .attr("fill", "#E97451") // Fill color for the area
+    .attr("fill", "#ce9b9b")
+    // Fill color for the area
     .attr("d", area);
 
   // Optionally, you can also include the line on top of the area
@@ -188,7 +186,7 @@ function updateAreaPlot(newData) {
     .append("path")
     .datum(newData)
     .attr("fill", "none")
-    .attr("stroke", "#AA4A44")
+    .attr("stroke", "#7a3e3e")
     .attr("stroke-width", 2)
     .attr("d", line); // Re-using the line generator for the boundary
 }
