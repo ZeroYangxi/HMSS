@@ -23,7 +23,7 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-color: #ffffff;
+  background-color: black;
   color: black;
   padding-top: 60px;
   /* Add top padding to body to prevent content from being hidden behind the navbar */
@@ -46,10 +46,11 @@ body {
 }
 
 /* Adjustments for alignment */
-#areaChart {
-  display: block;
-  padding-top: 30rem;
-  margin: 5-rem; /* Adjust based on your layout */
+.areaChart {
+  display: absolute;
+  margin-top: 2rem;
+  margin-left: 5rem; /* Adjust based on your layout */
+  transition: ease;
 }
 
 .container {
